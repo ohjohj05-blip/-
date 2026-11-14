@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오하준 | OH HAJUN</title>
+<meta name="description" content="오하준을 소개합니다. 꿈, 강점, 활동, 그리고 연락처.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --ink: #17171c;
+    --muted: #5d5d6b;
+    --line: #e7e4dc;
+    --accent: #ff5a36;
+    --accent-ink: #ffffff;
+    --accent-soft: #ffe9e3;
+    --shadow: 0 10px 30px rgba(23, 23, 28, .07);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #111116;
+      --surface: #1a1a21;
+      --ink: #f3f2ee;
+      --muted: #a4a3ae;
+      --line: #2c2c36;
+      --accent: #ff7656;
+      --accent-ink: #1a0b06;
+      --accent-soft: #3a1d16;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #111116;
+    --surface: #1a1a21;
+    --ink: #f3f2ee;
+    --muted: #a4a3ae;
+    --line: #2c2c36;
+    --accent: #ff7656;
+    --accent-ink: #1a0b06;
+    --accent-soft: #3a1d16;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Noto Sans KR", system-ui, sans-serif;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-x: hidden;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .logo { font-weight: 900; letter-spacing: -.02em; text-decoration: none; font-size: 1.15rem; }
+  .logo span { color: var(--accent); }
+  .nav ul { display: flex; gap: 20px; list-style: none; }
+  .nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: .95rem; }
+  .nav ul a:hover { color: var(--ink); }
+  @media (max-width: 560px) { .nav ul { display: none; } }
+
+  /* Hero */
+  .hero { padding: 72px 0 64px; }
+  @media (min-width: 720px) { .hero { padding: 112px 0 96px; } }
+  .hero-grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 860px) { .hero-grid { grid-template-columns: 1.3fr 1fr; } }
+  .tag {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent);
+    font-weight: 700; font-size: .85rem; margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(2.6rem, 9vw, 5.2rem);
+    line-height: 1.1; font-weight: 900; letter-spacing: -.04em;
+  }
+  h1 .hl { color: var(--accent); }
+  .lead { margin-top: 20px; font-size: clamp(1.05rem, 2.4vw, 1.25rem); color: var(--muted); max-width: 34em; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 24px; border-radius: 12px; font-weight: 700;
+    text-decoration: none; transition: transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { border: 1.5px solid var(--line); background: var(--surface); }
+
+  .avatar {
+    aspect-ratio: 1; width: 100%; max-width: 380px; justify-self: center;
+    border-radius: 32px; position: relative; max-width: min(380px, calc(100% - 24px));
+    background: linear-gradient(140deg, var(--accent) 0%, #ffb347 100%);
+    display: grid; place-items: center; box-shadow: var(--shadow);
+    transform: rotate(-3deg);
+  }
+  .avatar .initial { font-size: clamp(6rem, 22vw, 10rem); font-weight: 900; color: #fff; letter-spacing: -.05em; }
+  .avatar .badge {
+    position: absolute; bottom: -18px; right: 8px;
+    background: var(--surface); color: var(--ink);
+    padding: 10px 16px; border-radius: 14px; font-weight: 700; font-size: .95rem;
+    box-shadow: var(--shadow); transform: rotate(3deg); border: 1px solid var(--line);
+  }
+
+  /* Sections */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .eyebrow { color: var(--accent); font-weight: 700; font-size: .9rem; letter-spacing: .08em; text-transform: uppercase; }
+  h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 900; letter-spacing: -.03em; line-height: 1.25; margin: 8px 0 32px; }
+
+  .about-grid { display: grid; gap: 32px; }
+  @media (min-width: 860px) { .about-grid { grid-template-columns: 1.2fr 1fr; } }
+  .about-grid p { font-size: 1.08rem; color: var(--muted); }
+  .about-grid p + p { margin-top: 14px; }
+  .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fact { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+  .fact b { display: block; font-size: 1.6rem; font-weight: 900; color: var(--accent); line-height: 1.2; }
+  .fact span { color: var(--muted); font-size: .9rem; }
+
+  .cards { display: grid; gap: 16px; }
+  @media (min-width: 640px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 960px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 28px; transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .card .ico {
+    width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center;
+    background: var(--accent-soft); font-size: 1.5rem; margin-bottom: 18px;
+  }
+  .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+  .card p { color: var(--muted); font-size: .98rem; }
+
+  .timeline { list-style: none; position: relative; padding-left: 28px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: var(--line); }
+  .timeline li { position: relative; padding-bottom: 28px; }
+  .timeline li:last-child { padding-bottom: 0; }
+  .timeline li::before {
+    content: ""; position: absolute; left: -28px; top: 6px; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--bg); border: 3px solid var(--accent);
+  }
+  .timeline .when { font-size: .85rem; font-weight: 700; color: var(--accent); }
+  .timeline h3 { font-size: 1.1rem; font-weight: 700; }
+  .timeline p { color: var(--muted); }
+
+  .quote {
+    background: var(--accent); color: var(--accent-ink); border-radius: 28px;
+    padding: clamp(32px, 6vw, 64px); text-align: center;
+  }
+  .quote p { font-size: clamp(1.4rem, 4vw, 2.2rem); font-weight: 900; letter-spacing: -.02em; line-height: 1.4; }
+  .quote small { display: block; margin-top: 16px; font-weight: 500; opacity: .85; }
+
+  .contact { text-align: center; }
+  .contact h2 { margin-bottom: 12px; }
+  .contact .lead { margin: 0 auto 32px; }
+  .contact .cta { justify-content: center; }
+
+  footer { padding: 32px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; text-align: center; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.on { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">오하준<span>.</span></a>
+    <ul>
+      <li><a href="#about">소개</a></li>
+      <li><a href="#strengths">강점</a></li>
+      <li><a href="#story">발자취</a></li>
+      <li><a href="#contact">연락하기</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 히어로 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">👋 안녕하세요!</span>
+        <h1>도전을 즐기는<br><span class="hl">오하준</span>입니다</h1>
+        <p class="lead">새로운 것을 배우고, 직접 만들어 보고, 사람들과 함께 성장하는 것을 좋아합니다. 오하준의 이야기를 들어보세요.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">함께하기 →</a>
+          <a class="btn ghost" href="#about">더 알아보기</a>
+        </div>
+      </div>
+      <div class="avatar" aria-hidden="true">
+        <span class="initial">하준</span>
+        <span class="badge">⭐ 열정 충전 100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 소개 -->
+  <section id="about">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <h2>오하준은 이런 사람이에요</h2>
+      <div class="about-grid reveal">
+        <div>
+          <p>오하준은 호기심이 많고 무엇이든 끝까지 해내는 사람입니다. 어려운 문제를 만나면 포기하기보다 "어떻게 하면 될까?"를 먼저 생각합니다.</p>
+          <p>혼자 잘하는 것보다 함께 잘하는 것을 더 중요하게 여기며, 주변 사람들에게 긍정적인 에너지를 주는 것을 좋아합니다.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>100%</b><span>책임감</span></div>
+          <div class="fact"><b>∞</b><span>호기심</span></div>
+          <div class="fact"><b>24/7</b><span>긍정 에너지</span></div>
+          <div class="fact"><b>No.1</b><span>팀워크</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 강점 -->
+  <section id="strengths">
+    <div class="wrap">
+      <p class="eyebrow">Strengths</p>
+      <h2>오하준의 강점</h2>
+      <div class="cards">
+        <article class="card reveal">
+          <div class="ico">🚀</div>
+          <h3>실행력</h3>
+          <p>생각에서 멈추지 않고 바로 행동으로 옮깁니다. 작게 시작해 빠르게 배웁니다.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico">🤝</div>
+          <h3>소통 능력</h3>
+          <p>다른 사람의 이야기를 잘 듣고, 자신의 생각을 분명하고 친절하게 전합니다.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico">💡</div>
+          <h3>창의력</h3>
+          <p>익숙한 것도 새로운 시선으로 바라보며 남다른 아이디어를 냅니다.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico">📚</div>
+          <h3>배움에 대한 열정</h3>
+          <p>모르는 것을 부끄러워하지 않고, 꾸준히 배우며 매일 조금씩 성장합니다.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico">🎯</div>
+          <h3>끈기</h3>
+          <p>한번 정한 목표는 끝까지 갑니다. 실패도 다음 도전을 위한 연습입니다.</p>
+        </article>
+        <article class="card reveal">
+          <div class="ico">😊</div>
+          <h3>긍정 에너지</h3>
+          <p>어떤 상황에서도 웃음을 잃지 않아 함께하는 사람들까지 힘이 나게 합니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 발자취 -->
+  <section id="story">
+    <div class="wrap">
+      <p class="eyebrow">Story</p>
+      <h2>오하준의 발자취</h2>
+      <ol class="timeline reveal">
+        <li>
+          <span class="when">시작</span>
+          <h3>첫 번째 도전</h3>
+          <p>관심 있는 분야를 처음 만나고, 직접 해보며 재미를 느끼기 시작했습니다.</p>
+        </li>
+        <li>
+          <span class="when">성장</span>
+          <h3>꾸준한 노력</h3>
+          <p>매일 조금씩 연습하고 배우며 실력과 자신감을 쌓아왔습니다.</p>
+        </li>
+        <li>
+          <span class="when">지금</span>
+          <h3>새로운 목표를 향해</h3>
+          <p>지금도 더 큰 꿈을 향해 한 걸음씩 나아가고 있습니다.</p>
+        </li>
+        <li>
+          <span class="when">앞으로</span>
+          <h3>함께 만드는 미래</h3>
+          <p>좋은 사람들과 함께 세상에 도움이 되는 일을 하고 싶습니다.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 한마디 -->
+  <section>
+    <div class="wrap">
+      <div class="quote reveal">
+        <p>"오늘의 작은 도전이<br>내일의 큰 나를 만든다."</p>
+        <small>— 오하준</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- 연락 -->
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>오하준과 함께하고 싶다면?</h2>
+      <p class="lead">새로운 만남과 기회는 언제나 환영입니다. 편하게 연락 주세요!</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:hello@example.com">✉️ 이메일 보내기</a>
+        <a class="btn ghost" href="#top">↑ 맨 위로</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="year">2026</span> 오하준. All rights reserved.</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('on'));
+  }
+</script>
+</body>
+</html>
