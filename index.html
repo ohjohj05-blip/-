@@ -172,6 +172,16 @@
   .contact .lead { margin: 0 auto 32px; }
   .contact .cta { justify-content: center; }
 
+  .gb-box {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: clamp(16px, 4vw, 28px);
+  }
+  .gb-box .utterances { max-width: 100%; }
+  .gb-note { color: var(--muted); font-size: .95rem; }
+  .gb-note a { color: var(--accent); font-weight: 700; }
+  .gb-fallback { display: none; margin-top: 8px; }
+  .gb-fallback.on { display: block; }
+
   footer { padding: 32px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; text-align: center; }
 
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
@@ -191,6 +201,7 @@
       <li><a href="#about">소개</a></li>
       <li><a href="#strengths">강점</a></li>
       <li><a href="#story">발자취</a></li>
+      <li><a href="#guestbook">방명록</a></li>
       <li><a href="#contact">연락하기</a></li>
     </ul>
   </div>
@@ -316,6 +327,19 @@
     </div>
   </section>
 
+  <!-- 방명록 -->
+  <section id="guestbook">
+    <div class="wrap">
+      <p class="eyebrow">Guestbook</p>
+      <h2>오하준에게 한마디 남겨주세요</h2>
+      <div class="gb-box reveal">
+        <p class="gb-note">GitHub 계정으로 로그인하면 방명록을 남길 수 있어요.</p>
+        <div id="gb-widget"></div>
+        <p class="gb-note gb-fallback" id="gb-fallback">방명록을 불러오지 못했어요. <a href="https://github.com/ohjohj05-blip/-/issues?q=label%3A%EB%B0%A9%EB%AA%85%EB%A1%9D" target="_blank" rel="noopener">GitHub에서 방명록 보기 →</a></p>
+      </div>
+    </div>
+  </section>
+
   <!-- 연락 -->
   <section id="contact" class="contact">
     <div class="wrap reveal">
@@ -336,6 +360,23 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 방명록 (utterances: 저장소의 GitHub 이슈 하나에 댓글로 저장)
+  (function () {
+    const box = document.getElementById('gb-widget');
+    const fallback = document.getElementById('gb-fallback');
+    const sc = document.createElement('script');
+    sc.src = 'https://utteranc.es/client.js';
+    sc.async = true;
+    sc.crossOrigin = 'anonymous';
+    sc.setAttribute('repo', 'ohjohj05-blip/-');
+    sc.setAttribute('issue-term', '방명록');
+    sc.setAttribute('label', '방명록');
+    sc.setAttribute('theme', 'preferred-color-scheme');
+    sc.onerror = () => fallback.classList.add('on');
+    box.appendChild(sc);
+    setTimeout(() => { if (!box.querySelector('iframe')) fallback.classList.add('on'); }, 8000);
+  })();
   const els = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
